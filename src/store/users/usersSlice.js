@@ -9,13 +9,7 @@ const initialState = {
 const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {
-    fetchFromAPI: () => {
-      console.log(
-        'this should retrive the date form the API, this is a place holder'
-      );
-    },
-  },
+  reducers: {},
   extraReducers: {},//probably wi wil fetch data from here;
 });
 
