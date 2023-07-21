@@ -16,8 +16,8 @@ const usersSlice = createSlice({
       );
     },
   },
-  extraReducers: {},
+  extraReducers: {},//probably wi wil fetch data from here;
 });
 
-export const { fetchFromAPI } = usersSlice.actions;
+export const { fetchFromAPI, extraReducers } = usersSlice.actions;
 export default usersSlice.reducer;
