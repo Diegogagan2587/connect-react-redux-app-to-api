@@ -16,6 +16,7 @@ const usersSlice = createSlice({
       );
     },
   },
+  extraReducers: {},
 });
 
 export const { fetchFromAPI } = usersSlice.actions;
