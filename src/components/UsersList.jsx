@@ -1,4 +1,8 @@
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+
+const User = ({user})=> <li>{user}</li>;
+
 const UsersList = () => {
   const { users, isLoading, error } = useSelector((state) => state.users);
 
@@ -6,9 +10,12 @@ const UsersList = () => {
   if(error) return <div className="loading">Somthing went wrong...</div>
 
   return (
-    <div>
-      <p>The user List will be placed here</p>
-    </div>
+    <ul>
+      {users.map((user)=><User 
+      key={uuidv4()}
+      user={user}
+      />)}
+    </ul>
   );
 };
 
