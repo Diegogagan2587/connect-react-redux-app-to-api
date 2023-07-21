@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
 const UsersList = () => {
-    console.log('this is the request',response);
+  const { users, isLoading, error } = useSelector((state) => state.users);
+
   return (
     <div>
       <p>The user List will be placed here</p>
