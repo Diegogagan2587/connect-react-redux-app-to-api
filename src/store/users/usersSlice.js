@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {} from '@reduxjs/toolkit';
 
 const reduxAction = 'users/fetch';
-const fetchUser = async () => {
+const fetchUser = async (thunkAPI) => {
   const urlAPI = 'https://randomuser.me/api/?results=5';
   //this can contain the functoin fetch
   console.log('this will fetch data promthe API');
@@ -13,7 +13,7 @@ const fetchUser = async () => {
     console.log('the Response for fetchUser would be ----->', response);
     return response;
   } catch (error) {
-    return rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
 };
 export const getUsers = createAsyncThunk(reduxAction, fetchUser);
@@ -30,10 +30,10 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getUsers.fulfilled, (state) => {
-      return (state.isLoading = false);
+      state.isLoading = false;
     });
     builder.addCase(getUsers.pending, (state) => {
-      return (state.isLoading = true);
+      state.isLoading = true;
     });
     builder.addCase(getUsers.rejected, (state) => {
       state.isLoading = false;
