@@ -29,8 +29,10 @@ const usersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getUsers.fulfilled, (state) => {
+    builder.addCase(getUsers.fulfilled, (state,action) => {
+      console.log('this is builder.addCase fulfilled',action.payload.results)
       state.isLoading = false;
+      state.users = [...action.payload.results];
     });
     builder.addCase(getUsers.pending, (state) => {
       state.isLoading = true;
