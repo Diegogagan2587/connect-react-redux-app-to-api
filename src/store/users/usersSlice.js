@@ -18,8 +18,6 @@ const fetchUser = async ()=>{
 }
 const getUsers = createAsyncThunk(reduxAction,fetchUser);
 
-fetchUser();//remove after debuggin
-
 const initialState = {
   users: [],
   isLoading: false,
@@ -45,5 +43,6 @@ const usersSlice = createSlice({
   
 });
 
-export const { fetchFromAPI, extraReducers } = usersSlice.actions;
+export const { extraReducers } = usersSlice.actions;
 export default usersSlice.reducer;
+export getUsers;
