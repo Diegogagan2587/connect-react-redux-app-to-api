@@ -31,10 +31,18 @@ const usersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder)=>{
-    builder.addCase(getUsers.fulfilled, (state, action) => {
-      console.log('will run if getUsers is fullfilerd');
+    builder.addCase(getUsers.fulfilled, (state) => {
+      state.isLoading = false;
     })
-  }, //probably wi wil fetch data from here;
+    builder.addCase(getUsers.pending,(state)=>{
+      state.isLoading = true;
+    }),
+    builder.addCase(getUsers.rejected, ()=>{
+      state.isLoading = false;
+      state.error = 'Something went wrong';
+    }),
+  },
+  
 });
 
 export const { fetchFromAPI, extraReducers } = usersSlice.actions;
